@@ -7,7 +7,6 @@ entrypoint = "src:main.lua"
 channel = "stable-23_05"
 
 [workflows]
-runButton = "Game"
 
 [[workflows.workflow]]
 name = "Game"

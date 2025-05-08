@@ -1,22 +1,24 @@
-
-love.filesystem.setRequirePath("modules/?.lua;modules/HC/?.lua")
+love.filesystem.setRequirePath("modules/?.lua;modules/?/init.lua")
 
 -- Load modules globally
 _G.Player = require("Player")
 _G.Vector2 = require("Vector2")
+_G.Collectable = require("Collectable")
 _G.HC = require("HC")
 
 local collisionText = ""
 local objects = {}
 
 function love.load()
-  -- Create ground rectangle
-  objects.ground = HC.rectangle(200, 400, 400, 20)
-  objects.box1 = HC.rectangle(300, 300, 50, 50)
-  objects.box2 = HC.rectangle(400, 200, 40, 40)
-  
-  -- Create player
-  player = Player.new(Vector2.new(80, 80))
+    local coin = love.graphics.newImage("assets/images/coin.png")
+    local size = Vector2.new(80, 80)
+    for index = 1, 10 do
+        local position = Vector2.new(love.math.random(0, 800), love.math.random(0, 600))
+        local newCollectable = Collectable.new(position, size, coin)
+        table.insert(objects, newCollectable)
+    end
+    -- Create player
+    player = Player.new(Vector2.new(80, 80))
 end
 
 function love.update(dt)
@@ -25,13 +27,10 @@ function love.update(dt)
   collisionText = ""
   -- Check collisions between player and all objects
   for name, obj in pairs(objects) do
-    local collides, dx, dy = player.collision:collidesWith(obj)
+    local collides, dx, dy = player.collision:collidesWith(obj.collision)
     if collides then
       collisionText = collisionText .. string.format("\nCollision with %s! Delta: %.2f, %.2f", name, dx, dy)
-      -- Push player back by collision vector
-      player.position.x = player.position.x + dx
-      player.position.y = player.position.y + dy
-      player.collision:moveTo(player.position.x + player.size.x/2, player.position.y + player.size.y/2)
+    table.remove(objects, name)
     end
   end
   

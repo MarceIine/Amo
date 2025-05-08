@@ -17,16 +17,18 @@ function Player.new(size, position)
   self.size = size or Vector2.new(80, 80)
   self.speed = 100
   self.moveDirection = Vector2.new(0,0)
+  self.debug = false
 
-  self.collision = HC.rectangle(self.position.x, self.position.y, self.size.x / playerImage:getWidth(), self.size.y / playerImage:getHeight())
+  self.collision = HC.rectangle(self.position.x, self.position.y, self.size.x, self.size.y)
   return self
 end
 
 function Player:draw(color)
-  --love.graphics.setColor(1, 0, 0) -- Red color
-  self.collision:draw("fill")
+  if self.debug then
+    self.collision:draw("fill")
+  end
+  
   love.graphics.draw(playerImage, self.position.x, self.position.y, 0, self.size.x / playerImage:getWidth(), self.size.y / playerImage:getHeight())
-  --love.graphics.rectangle("fill", self.position.x, self.position.y, self.size.x, self.size.y)
 end
 
 function Player:update(dt)
@@ -46,14 +48,6 @@ function Player:update(dt)
   if love.keyboard.isDown(keybinds.right) then
    self.moveDirection.x = 1
   end
-
-  -- Move the player in the move direction.
-  --self.position.x = self.position.x + self.moveDirection.x * self.speed * dt
-  --self.position.y = self.position.y + self.moveDirection.y * self.speed * dt
-
-  
-  
-  
   
   -- Update position first
   self.position.x = self.position.x + self.moveDirection.x * self.speed * dt
