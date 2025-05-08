@@ -5,6 +5,9 @@ local keybinds = {
   right = {"d", "right"}
 }
 
+-- Loading the image here to avoid loading it multiple times
+local playerImage = love.graphics.newImage("assets/images/Character.png")
+
 local Player = {}
 Player.__index = Player
 
@@ -14,12 +17,14 @@ function Player.new(size, position)
   self.size = size or Vector2.new(80, 80)
   self.speed = 100
   self.moveDirection = Vector2.new(0,0)
+  
   return self
 end
 
 function Player:draw(color)
   love.graphics.setColor(1, 0, 0) -- Red color
-  love.graphics.rectangle("fill", self.position.x, self.position.y, self.size.x, self.size.y)
+  love.graphics.draw(playerImage, self.position.x, self.position.y, 0, self.size.x / playerImage:getWidth(), self.size.y / playerImage:getHeight())
+  --love.graphics.rectangle("fill", self.position.x, self.position.y, self.size.x, self.size.y)
 end
 
 function Player:update(dt)
