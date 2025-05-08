@@ -1,6 +1,19 @@
 run = "love ."
 
-entrypoint = "main.lua"
+# entry point at src/main.lua
+entrypoint = "src:main.lua"
 
 [nix]
 channel = "stable-23_05"
+
+[workflows]
+runButton = "Run"
+
+[[workflows.workflow]]
+name = "Run"
+author = 39733787
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd src && love ."
