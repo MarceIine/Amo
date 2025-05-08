@@ -1,4 +1,4 @@
-run = "love ."
+run = "cd src && love ."
 
 # entry point at src/main.lua
 entrypoint = "src:main.lua"
@@ -7,13 +7,17 @@ entrypoint = "src:main.lua"
 channel = "stable-23_05"
 
 [workflows]
-runButton = "Run"
+runButton = "Game"
 
 [[workflows.workflow]]
-name = "Run"
-author = 39733787
+name = "Game"
 mode = "sequential"
+author = 39733787
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "cd src && love ."
+args = "cd src/"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "love ."
