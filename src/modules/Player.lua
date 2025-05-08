@@ -18,7 +18,7 @@ function Player.new(size, position)
 end
 
 function Player:draw(color)
-  love.graphics.setColor(121, 19, 19) -- Render with black color
+  love.graphics.setColor(1, 0, 0) -- Red color
   love.graphics.rectangle("fill", self.position.x, self.position.y, self.size.x, self.size.y)
   
 end
