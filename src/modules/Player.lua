@@ -22,7 +22,7 @@ function Player.new(size, position)
 end
 
 function Player:draw(color)
-  love.graphics.setColor(1, 0, 0) -- Red color
+  --love.graphics.setColor(1, 0, 0) -- Red color
   love.graphics.draw(playerImage, self.position.x, self.position.y, 0, self.size.x / playerImage:getWidth(), self.size.y / playerImage:getHeight())
   --love.graphics.rectangle("fill", self.position.x, self.position.y, self.size.x, self.size.y)
 end
