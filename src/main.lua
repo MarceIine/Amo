@@ -12,5 +12,6 @@ function love.update(dt)
   player:update(dt)
 end
 function love.draw()
+  love.graphics.clear()
   player:draw()
 end

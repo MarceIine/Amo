@@ -20,7 +20,6 @@ end
 function Player:draw(color)
   love.graphics.setColor(1, 0, 0) -- Red color
   love.graphics.rectangle("fill", self.position.x, self.position.y, self.size.x, self.size.y)
-  love.graphics.clear()
 end
 
 function Player:update(dt)
