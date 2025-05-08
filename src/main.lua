@@ -1,8 +1,10 @@
 love.filesystem.setRequirePath("modules/?.lua")
 
+-- Load modules globally
+_G.Player = require("Player")
+_G.Vector2 = require("Vector2")
+
 function love.load()
-  local Player = require("Player")
-  local Vector2 = require()
   player = Player.new()
 end
 
