@@ -9,7 +9,7 @@ function Player.new()
   return self
 end
 
-function player:draw()
+function Player:draw()
   love.graphics.rectangle("fill", self.x, self.y, self.size, self.size)
 end
 

@@ -1,7 +1,8 @@
-function --love.load()love.filesystem.setRequirePath("src/modules?.lua;")
 
-  
-  local Player = require("src/modules/Player")
+love.filesystem.setRequirePath("modules/?.lua")
+
+function love.load()
+  local Player = require("Player")
   player = Player.new()
 end
 
