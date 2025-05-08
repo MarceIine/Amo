@@ -17,7 +17,7 @@ function Player.new(size, position)
   self.size = size or Vector2.new(80, 80)
   self.speed = 100
   self.moveDirection = Vector2.new(0,0)
-  
+
   return self
 end
 
