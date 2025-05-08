@@ -1,10 +1,9 @@
 run = "cd src && love ."
-
-# entry point at src/main.lua
-entrypoint = "src:main.lua"
+compile = "make"
+modules = ["lua-5.2", "python-3.12", "nix"]
 
 [nix]
-channel = "stable-23_05"
+channel = "stable-24_05"
 
 [workflows]
 
@@ -20,3 +19,7 @@ args = "cd src/"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "love ."
+
+[deployment]
+run = ["sh", "-c", "cd src && love ."]
+build = ["sh", "-c", "make"]
