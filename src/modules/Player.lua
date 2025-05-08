@@ -50,7 +50,12 @@ function Player:update(dt)
   -- Move the player in the move direction.
   --self.position.x = self.position.x + self.moveDirection.x * self.speed * dt
   --self.position.y = self.position.y + self.moveDirection.y * self.speed * dt
--- Update position first
+
+  
+  
+  
+  
+  -- Update position first
   self.position.x = self.position.x + self.moveDirection.x * self.speed * dt
   self.position.y = self.position.y + self.moveDirection.y * self.speed * dt
   

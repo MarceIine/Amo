@@ -4,7 +4,7 @@ love.filesystem.setRequirePath("modules/?.lua;modules/HC/?.lua")
 -- Load modules globally
 _G.Player = require("Player")
 _G.Vector2 = require("Vector2")
-_G.HC = require("HC")
+_G.HC = require("modules/HC")
 
 local collisionText = ""
 
