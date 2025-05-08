@@ -50,11 +50,15 @@ function Player:update(dt)
   -- Move the player in the move direction.
   --self.position.x = self.position.x + self.moveDirection.x * self.speed * dt
   --self.position.y = self.position.y + self.moveDirection.y * self.speed * dt
-self.collision:moveTo(self.position.x + self.moveDirection.x * self.speed * dt, self.position.y + self.moveDirection.y * self.speed * dt)
+-- Update position first
+  self.position.x = self.position.x + self.moveDirection.x * self.speed * dt
+  self.position.y = self.position.y + self.moveDirection.y * self.speed * dt
   
-  -- I was right to reset the moveDirection at the end
-  self.moveDirection = Vector2.new(0,0) -- fuck it, create a new whole vector
-  --lol
+  -- Update collision box position to match player position
+  self.collision:moveTo(self.position.x + self.size.x/2, self.position.y + self.size.y/2)
+  
+  -- Reset movement direction
+  self.moveDirection = Vector2.new(0,0)
 end
 
 return Player
